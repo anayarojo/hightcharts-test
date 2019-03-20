@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hieght Charts Test</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<body>
+
+    <!-- Container -->
+    <div class="container mt-4">
+        <div id="hight-chart-container"></div>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" 
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/data.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script>
+    (function(){
+
+        const properties = {
+            chart: {
+                type: 'line',
+                renderTo: 'hight-chart-container'
+            },
+            title: {
+                text: 'Hightchart Title'
+            },
+            xAxis: {
+                title: {
+                    text: 'X Axis'
+                }
+            },
+            yAxis: {
+                allowDecimals: true,
+                title: {
+                    text: 'Y Axis'
+                }
+            },
+            series: [
+                {
+                    name: 'Raul',
+                    data: [1, 2, 3, 4, 5]
+                },
+                {
+                    name: 'Sergio',
+                    data: [10, 15, 20, 25, 30]
+                },
+                {
+                    name: 'Francisco',
+                    data: [2, 4, 8, 16, 32]
+                },
+            ],
+            tooltip: {
+                formatter: function () {
+                    return `<b> ${(this.series.name || '')} </b><br/> 
+                            ${this.point.y } ${(this.point.name || '').toLowerCase()}`;
+                }
+            }
+        };
+
+        const chart = Highcharts.chart(properties);
+
+    }());
+    </script>
+</body>
+</html>
